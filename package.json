@@ -1,0 +1,16 @@
+{
+  "name": "system-overlay",
+  "version": "1.0.0",
+  "description": "A system overlay displaying real-time system information.",
+  "main": "system-overlay/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^33.3.1",
+    "loudness": "^0.4.2",
+    "systeminformation": "^5.25.6"
+  },
+  "author": "",
+  "license": "MIT"
+}
