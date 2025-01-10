@@ -29,35 +29,66 @@ function updateTimePlayed() {
 
 // Update FPS (placeholder logic; replace with actual FPS if available)
 function updateFPS() {
-    document.getElementById('fps').textContent = `FPS: ${Math.floor(Math.random() * 60) + 30}`;
+    try {
+        // Replace this random generation with actual FPS data if available
+        const fps = Math.floor(Math.random() * 60) + 30;
+        document.getElementById('fps').textContent = `FPS: ${fps}`;
+    } catch (error) {
+        console.error('Error fetching FPS:', error);
+        document.getElementById('fps').textContent = `FPS: N/A`;
+    }
 }
 
 // Update CPU Usage
 async function updateCPU() {
-    const load = await si.currentLoad();
-    document.getElementById('cpu').textContent = `CPU: ${Math.round(load.currentLoad)}%`;
+    try {
+        const load = await si.currentLoad();
+        document.getElementById('cpu').textContent = `CPU: ${Math.round(load.currentLoad)}%`;
+    } catch (error) {
+        console.error('Error fetching CPU usage:', error);
+        document.getElementById('cpu').textContent = `CPU: N/A`;
+    }
 }
 
 // Update GPU Usage (if available)
 async function updateGPU() {
-    const graphics = await si.graphics();
-    if (graphics.controllers.length > 0) {
-        document.getElementById('gpu').textContent = `GPU: ${Math.round(graphics.controllers[0].utilizationGpu || 0)}%`;
-    } else {
+    try {
+        const graphics = await si.graphics();
+        if (graphics.controllers.length > 0) {
+            document.getElementById('gpu').textContent = `GPU: ${Math.round(graphics.controllers[0].utilizationGpu || 0)}%`;
+        } else {
+            document.getElementById('gpu').textContent = `GPU: N/A`;
+        }
+    } catch (error) {
+        console.error('Error fetching GPU usage:', error);
         document.getElementById('gpu').textContent = `GPU: N/A`;
     }
 }
 
 // Update Battery
 async function updateBattery() {
-    const battery = await si.battery();
-    document.getElementById('battery').textContent = `Battery: ${battery.percent}%`;
+    try {
+        const battery = await si.battery();
+        if (battery.hasBattery) {
+            document.getElementById('battery').textContent = `Battery: ${battery.percent}%`;
+        } else {
+            document.getElementById('battery').textContent = `Battery: N/A`;
+        }
+    } catch (error) {
+        console.error('Error fetching battery info:', error);
+        document.getElementById('battery').textContent = `Battery: N/A`;
+    }
 }
 
 // Update Volume (using loudness package)
 async function updateVolume() {
-    const volume = await loudness.getVolume();
-    document.getElementById('volume').textContent = `Volume: ${volume}%`;
+    try {
+        const volume = await loudness.getVolume();
+        document.getElementById('volume').textContent = `Volume: ${volume}%`;
+    } catch (error) {
+        console.error('Error fetching volume:', error);
+        document.getElementById('volume').textContent = `Volume: N/A`;
+    }
 }
 
 // Update All Stats
