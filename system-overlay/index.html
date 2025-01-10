@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Overlay</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: 12px; /* Smaller text */
+      background: black;
+      color: white;
+    }
+    .overlay-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px; /* Reduced height */
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      overflow: hidden;
+    }
+    .stat {
+      margin-right: 15px; /* Space between stats */
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay-bar">
+    <span class="stat" id="date"></span>
+    <span class="stat" id="date-time"></span>
+    <span class="stat" id="time-played"></span>
+    <span class="stat" id="fps"></span>
+    <span class="stat" id="cpu"></span>
+    <span class="stat" id="gpu"></span>
+    <span class="stat" id="battery"></span>
+    <span class="stat" id="volume"></span>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
