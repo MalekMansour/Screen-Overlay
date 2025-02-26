@@ -33,7 +33,3 @@ A lightweight HTML, CSS, and JavaScript-based system overlay that displays real-
 
 ## License
 This project is licensed under the MIT License.
-
-## Author
-Malek Mansour
-
